@@ -9,7 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "UCNetSDKDef.h"
 
-
+#pragma mark - HiNow回调方法
+typedef NS_ENUM(NSUInteger,HiNowNetWorkStatus) {
+    HiNowNetWorkStatus_Unknown = 0, //其他网络
+    HiNowNetWorkStatus_None    = 1, //无网络
+    HiNowNetWorkStatus_WiFi    = 2, //Wifi网络
+    HiNowNetWorkStatus_WLAN    = 3, //蜂窝网络
+};
+typedef void(^HiNowNetWorkStatusBlock)(HiNowNetWorkStatus hiNowNetStatus);
 /**
 这是 `NSObject` 的一个子类。 它是`UNetAnalysisSDK`的主要操作类，在这个类中定义了SDK的主要操作。
  
@@ -22,6 +29,8 @@
  */
 @interface UMQAClient : NSObject
 
+#pragma mark - HiNow回调方法
+@property(nonatomic, copy) HiNowNetWorkStatusBlock _Nullable hiNowNetWorkStatusBlock;
 
 /**
  @brief 创建一个`UMQAClient`单例对象

@@ -24,6 +24,12 @@ static UMQAClient *sdkManager_instance = nil;
     static dispatch_once_t ucloudNetAnalysis_onceToken;
     dispatch_once(&ucloudNetAnalysis_onceToken, ^{
         sdkManager_instance = [[super allocWithZone:NULL] init];
+#pragma mark - HiNow回调方法
+        [[UCNetClient shareInstance] setNetWorkStatusBlock:^(NetWorkStatus netStatus) {
+            if(sdkManager_instance.hiNowNetWorkStatusBlock) {
+                sdkManager_instance.hiNowNetWorkStatusBlock((HiNowNetWorkStatus)netStatus);
+            }
+        }];
     });
     return sdkManager_instance;
 }
