@@ -25,4 +25,5 @@ typedef NS_ENUM(NSUInteger,UCTriggerDetectType)
 - (void)settingUserDefineJsonFields:(NSString * _Nullable)fields;
 - (void)closePingAndTracert;
 - (void)closeAutoDetech;
+- (void)networkChange:(NSNotification *)noti;
 @end
