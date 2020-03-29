@@ -89,6 +89,10 @@ static UCNetClient *ucloudNetClient_instance = nil;
     [[UCNetInfoReporter shareInstance] uGetSDKStatusWithCompletionHandler:^(UNetSDKStatus * _Nullable sdkStatus, UCError * _Nullable ucError) {
         if (ucError) {
             log4cplus_error("UNetSDK", "Get SDK status error, stop data collection...\n");
+#pragma mark - HiNow回调方法 修复首次无网络不识别网络
+            if(self.netWorkStatusBlock) {
+                self.netWorkStatusBlock(NetWorkStatus_None);
+            }
             return;
         }
         self.sdkSwitch = (UNetSDKSwitch)sdkStatus.data.enabled;
@@ -301,6 +305,7 @@ static UCNetClient *ucloudNetClient_instance = nil;
         default:
             break;
     }
+#pragma mark - HiNow回调方法
     if(self.netWorkStatusBlock) {
         switch (self.netStatus) {
             case UCNetworkStatus_Unknown:{
