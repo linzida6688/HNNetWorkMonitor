@@ -301,6 +301,28 @@ static UCNetClient *ucloudNetClient_instance = nil;
         default:
             break;
     }
+    if(self.hiNowNetWorkStatusBlock) {
+        switch (self.netStatus) {
+            case UCNetworkStatus_Unknown:{
+                self.hiNowNetWorkStatusBlock(HiNowNetWorkStatus_Unknown);
+                break;}
+            case UCNetworkStatus_None:{
+                self.hiNowNetWorkStatusBlock(HiNowNetWorkStatus_None);
+                break;}
+            case UCNetworkStatus_WiFi:{
+                self.hiNowNetWorkStatusBlock(HiNowNetWorkStatus_WiFi);
+                break;}
+            case UCNetworkStatus_WWAN2G:{
+                self.hiNowNetWorkStatusBlock(HiNowNetWorkStatus_WLAN);
+                break;}
+            case UCNetworkStatus_WWAN3G:{
+                self.hiNowNetWorkStatusBlock(HiNowNetWorkStatus_WLAN);
+                break;}
+            case UCNetworkStatus_WWAN4G:{
+                self.hiNowNetWorkStatusBlock(HiNowNetWorkStatus_WLAN);
+                break;}
+        }
+    }
 }
 
 - (void)updateEnvironments

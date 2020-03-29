@@ -14,8 +14,18 @@ typedef NS_ENUM(NSUInteger,UCTriggerDetectType)
     UCTriggerDetectType_Manual
 };
 
-
+#pragma mark - HiNow回调方法
+typedef NS_ENUM(NSUInteger,HiNowNetWorkStatus) {
+    HiNowNetWorkStatus_Unknown = 0, //其他网络
+    HiNowNetWorkStatus_None    = 1, //无网络
+    HiNowNetWorkStatus_WiFi    = 2, //Wifi网络
+    HiNowNetWorkStatus_WLAN    = 3, //蜂窝网络
+};
+typedef void(^HiNowNetWorkStatusBlock)(HiNowNetWorkStatus netStatus);
 @interface UCNetClient : NSObject
+
+#pragma mark - HiNow回调方法
+@property(nonatomic, copy) HiNowNetWorkStatusBlock _Nullable hiNowNetWorkStatusBlock;
 
 + (instancetype _Nonnull)shareInstance;
 - (int)registSdkWithAppKey:(NSString * _Nonnull)appkey
@@ -25,5 +35,4 @@ typedef NS_ENUM(NSUInteger,UCTriggerDetectType)
 - (void)settingUserDefineJsonFields:(NSString * _Nullable)fields;
 - (void)closePingAndTracert;
 - (void)closeAutoDetech;
-- (void)networkChange:(NSNotification *)noti;
 @end
