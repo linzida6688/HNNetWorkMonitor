@@ -26,6 +26,7 @@ static UMQAClient *sdkManager_instance = nil;
         sdkManager_instance = [[super allocWithZone:NULL] init];
 #pragma mark - HiNow回调方法
         [[UCNetClient shareInstance] setNetWorkStatusBlock:^(NetWorkStatus netStatus) {
+            sdkManager_instance.netWorkStatus = (HiNowNetWorkStatus)netStatus;
             if(sdkManager_instance.hiNowNetWorkStatusBlock) {
                 sdkManager_instance.hiNowNetWorkStatusBlock((HiNowNetWorkStatus)netStatus);
             }

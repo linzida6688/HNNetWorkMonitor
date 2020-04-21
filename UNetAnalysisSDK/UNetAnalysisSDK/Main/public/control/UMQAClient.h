@@ -14,7 +14,9 @@ typedef NS_ENUM(NSUInteger,HiNowNetWorkStatus) {
     HiNowNetWorkStatus_Unknown = 0, //其他网络
     HiNowNetWorkStatus_None    = 1, //无网络
     HiNowNetWorkStatus_WiFi    = 2, //Wifi网络
-    HiNowNetWorkStatus_WLAN    = 3, //蜂窝网络
+    HiNowNetWorkStatus_WLAN2G  = 3, //2G蜂窝网络
+    HiNowNetWorkStatus_WLAN3G  = 4, //3G蜂窝网络
+    HiNowNetWorkStatus_WLAN4G  = 5, //4G蜂窝网络
 };
 typedef void(^HiNowNetWorkStatusBlock)(HiNowNetWorkStatus hiNowNetStatus);
 /**
@@ -30,7 +32,8 @@ typedef void(^HiNowNetWorkStatusBlock)(HiNowNetWorkStatus hiNowNetStatus);
 @interface UMQAClient : NSObject
 
 #pragma mark - HiNow回调方法
-@property(nonatomic, copy) HiNowNetWorkStatusBlock _Nullable hiNowNetWorkStatusBlock;
+@property(nonatomic, copy) HiNowNetWorkStatusBlock _Nullable hiNowNetWorkStatusBlock; //网络状态回调
+@property(nonatomic, assign) HiNowNetWorkStatus netWorkStatus; //读取网络状态
 
 /**
  @brief 创建一个`UMQAClient`单例对象

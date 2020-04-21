@@ -19,7 +19,9 @@ typedef NS_ENUM(NSUInteger,NetWorkStatus) {
     NetWorkStatus_Unknown = 0, //其他网络
     NetWorkStatus_None    = 1, //无网络
     NetWorkStatus_WiFi    = 2, //Wifi网络
-    NetWorkStatus_WLAN    = 3, //蜂窝网络
+    NetWorkStatus_WLAN2G  = 3, //2G蜂窝网络
+    NetWorkStatus_WLAN3G  = 4, //3G蜂窝网络
+    NetWorkStatus_WLAN4G  = 5, //4G蜂窝网络
 };
 typedef void(^NetWorkStatusBlock)(NetWorkStatus netStatus);
 @interface UCNetClient : NSObject

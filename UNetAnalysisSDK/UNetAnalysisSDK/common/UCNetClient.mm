@@ -318,13 +318,13 @@ static UCNetClient *ucloudNetClient_instance = nil;
                 self.netWorkStatusBlock(NetWorkStatus_WiFi);
                 break;}
             case UCNetworkStatus_WWAN2G:{
-                self.netWorkStatusBlock(NetWorkStatus_WLAN);
+                self.netWorkStatusBlock(NetWorkStatus_WLAN2G);
                 break;}
             case UCNetworkStatus_WWAN3G:{
-                self.netWorkStatusBlock(NetWorkStatus_WLAN);
+                self.netWorkStatusBlock(NetWorkStatus_WLAN3G);
                 break;}
             case UCNetworkStatus_WWAN4G:{
-                self.netWorkStatusBlock(NetWorkStatus_WLAN);
+                self.netWorkStatusBlock(NetWorkStatus_WLAN4G);
                 break;}
         }
     }
